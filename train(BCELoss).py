@@ -147,11 +147,6 @@ if __name__ == '__main__':
             # 通过新生成的假样本来计算生成器的的loss
             G_loss = nn.BCELoss()(D(fake_image2), real_label)
 
-            # # 判别器的损失函数，负号代表优化过程使整个式子朝着变大的方向优化，也就是增加判别器对专业人士的评价
-            # D_loss = - torch.mean(torch.log(prob_artist0) + torch.log(torch.tensor(1).float() - prob_artist1))
-            # # 生成器的损失函数，使整个式子朝着变小的方向优化，也就是想要提高判别器对计算机的评价
-            # G_loss = torch.mean(torch.log(torch.tensor(1).float() - prob_artist1)
-
             # 优化生成器
             opt_G.zero_grad()
             G_loss.backward()
